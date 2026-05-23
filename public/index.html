@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мессенджер: users.cfg + LocalStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ЭКРАН ВХОДА И РЕГИСТРАЦИИ -->
+    <div id="auth-screen" class="window-container auth-box">
+        <h2>Вход в Мессенджер</h2>
+        <input id="auth-username" type="text" placeholder="Имя пользователя">
+        <input id="auth-password" type="password" placeholder="Пароль">
+        <div class="auth-buttons">
+            <button onclick="handleLogin()">Войти</button>
+            <button onclick="handleRegister()" class="btn-secondary">Регистрация</button>
+        </div>
+    </div>
+
+    <!-- ГЛАВНЫЙ ЭКРАН МЕССЕНДЖЕРА (Изначально скрыт через CSS) -->
+    <div id="app-screen" class="window-container messenger-main" style="display: none;">
+        
+        <!-- Левая панель: Профиль и Поиск людей -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <span>Вы: <b id="my-name">---</b></span>
+                <button onclick="logout()" class="btn-logout">Выйти</button>
+            </div>
+            <input id="search-input" type="text" placeholder="Поиск людей..." oninput="filterUsers()">
+            <div id="users-list" class="list-container">
+                <!-- Сюда скрипт вставит найденных пользователей -->
+            </div>
+        </div>
+
+        <!-- Правая панель: Чат переписки -->
+        <div class="chat-area">
+            <div id="chat-header">Выберите, кому написать в списке слева...</div>
+            <div id="chat-box"></div>
+            <div class="chat-footer">
+                <input id="msg-text" type="text" placeholder="Напишите сообщение..." disabled>
+                <button id="send-btn" onclick="sendMessage()" disabled>Отправить</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
